@@ -1,0 +1,10 @@
+# Example only. Never commit real tunnel credentials.
+tunnel: REPLACE_WITH_TUNNEL_ID
+credentials-file: /etc/cloudflared/REPLACE_WITH_TUNNEL_ID.json
+
+ingress:
+  - hostname: lab.themarvel.space
+    service: http://localhost:3000
+  - hostname: nas.themarvel.space
+    service: http://localhost:8080
+  - service: http_status:404
