@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "themarvel-api",
+  "main": "workers/api/src/index.ts",
+  "compatibility_date": "2026-08-20",
+  "compatibility_flags": ["nodejs_compat_v2"],
+  "vars": {
+    "ENVIRONMENT": "production",
+    "PUBLIC_DOMAIN": "themarvel.space",
+    "ZERO_TRUST_TEAM_DOMAIN": "themarvel5.cloudflareaccess.com"
+  },
+  "d1_databases": [{
+    "binding": "THEMARVEL_DB",
+    "database_name": "themarvel-db",
+    "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+    "migrations_dir": "database/migrations"
+  }],
+  "kv_namespaces": [{
+    "binding": "THEMARVEL_KV",
+    "id": "REPLACE_WITH_KV_NAMESPACE_ID"
+  }],
+  "r2_buckets": [{
+    "binding": "THEMARVEL_R2",
+    "bucket_name": "themarvel-assets"
+  }],
+  "ai": {"binding": "AI"},
+  "routes": [{
+    "pattern": "api.themarvel.space/*",
+    "zone_name": "themarvel.space"
+  }],
+  "observability": {"enabled": true},
+  "env": {
+    "staging": {
+      "name": "themarvel-api-staging",
+      "vars": {"ENVIRONMENT": "staging"}
+    },
+    "production": {
+      "name": "themarvel-api",
+      "vars": {"ENVIRONMENT": "production"}
+    }
+  }
+}
